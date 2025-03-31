@@ -7,7 +7,16 @@ dotenv.config();
 const app = express();
 const port = 8080;
 
-app.get("/", async (req, res) => {
+// Middleware to check API key
+const checkApiKey = (req, res, next) => {
+  const apiKey = req.query.fccApiKey;
+  if (!apiKey || apiKey !== process.env.FCC_API_KEY) {
+    return res.status(401).json({ error: "Invalid or missing API key" });
+  }
+  next();
+};
+
+app.get("/", checkApiKey, async (req, res) => {
   try {
     const icsUrl = process.env.CALENDAR_URL;
 
