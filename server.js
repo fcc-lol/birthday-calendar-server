@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const port = 3108;
+const port = 8080;
 
 app.get("/", async (req, res) => {
   try {
