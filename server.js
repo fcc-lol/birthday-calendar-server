@@ -7,6 +7,12 @@ dotenv.config();
 const app = express();
 const port = 8080;
 
+const formatName = (name) => {
+  let formatted = name.replace("'s Birthday", "");
+  formatted = formatted.replace("’s Birthday", "");
+  return formatted;
+};
+
 // Middleware to check API key
 const checkApiKey = (req, res, next) => {
   const apiKey = req.query.fccApiKey;
@@ -42,12 +48,12 @@ app.get("/", checkApiKey, async (req, res) => {
 
         // If the date is in the past, move it to next year
         if (compareDate < today) {
-          eventDate.setFullYear(today.getFullYear() + 1);
+          compareDate.setFullYear(today.getFullYear() + 1);
         }
 
         return {
-          name: event.summary,
-          date: eventDate.toISOString().split("T")[0]
+          name: formatName(event.summary),
+          date: compareDate.toISOString().split("T")[0]
         };
       })
       .sort((a, b) => {
