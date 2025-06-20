@@ -1,0 +1,9 @@
+{
+  "service_id": "birthday-calendar-server",
+  "service_name": "Birthday Calendar Server",
+  "domain": "https://birthday-calendar-server.fcc.lol",
+  "host": "localhost",
+  "port": "3103",
+  "author": "fcc",
+  "created_on": "Fri Jun 20 15:05:41 UTC 2025"
+}
